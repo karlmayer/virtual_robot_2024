@@ -75,6 +75,8 @@ public class HolonomicDrive2 extends LinearOpMode {
         backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        IMU imu = hardwareMap.get(IMU.class, "imu");
+
         // Send telemetry message to signify robot waiting
         telemetry.addData(">", "Robot Ready.  Press Play.");    //
         telemetry.update();
@@ -83,6 +85,9 @@ public class HolonomicDrive2 extends LinearOpMode {
         waitForStart();
 
         // Run until driver presses Stop
+        boolean yButtonDown = false;
+        boolean slowMode = false;
+
         while (opModeIsActive()) {
             double leftStickX = gamepad1.left_stick_x; // turn
             double leftStickY = -gamepad1.left_stick_y; // arm
@@ -98,9 +103,6 @@ public class HolonomicDrive2 extends LinearOpMode {
             boolean bButton = gamepad1.b; // collection out
             boolean yButton = gamepad1.y; // slow mode
             boolean xButton = gamepad1.x;
-
-            boolean yButtonDown = false;
-            boolean slowMode = false;
 
             // slow mode on & off
             if (yButton) {
@@ -142,23 +144,12 @@ public class HolonomicDrive2 extends LinearOpMode {
             frontRightMotor.setPower(frontRightPower);
             backRightMotor.setPower(backRightPower);
 
-            // Send telemetry message to signify robot running;
-            telemetry.addData("FL", "%.2f", frontLeftPower);
-            telemetry.addData("FL encoder", "%d", frontLeftMotor.getCurrentPosition());
-
-            telemetry.addData("FR", "%.2f", frontRightPower);
-            telemetry.addData("FR encoder", "%d", frontRightMotor.getCurrentPosition());
-
-            telemetry.addData("BL", "%.2f", backLeftPower);
-            telemetry.addData("BL encoder", "%d", backLeftMotor.getCurrentPosition());
-
-            telemetry.addData("BR", "%.2f", backRightPower);
-            telemetry.addData("BR encoder", "%d", backRightMotor.getCurrentPosition());
+            telemetry.addData("Slow Mode: ", "%b", slowMode);
 
 //            telemetry.addData("Color","R %d  G %d  B %d", colorSensor.red(), colorSensor.green(), colorSensor.blue());
-//            Orientation orientation = imu.getRobotOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
-//            telemetry.addData("Heading", " %.1f", orientation.firstAngle * 180.0 / Math.PI);
-//            telemetry.addData("Angular Velocity", "%.1f", imu.getRobotAngularVelocity(AngleUnit.DEGREES).zRotationRate);
+            Orientation orientation = imu.getRobotOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
+            telemetry.addData("Heading", " %.1f", orientation.firstAngle * 180.0 / Math.PI);
+            telemetry.addData("Angular Velocity", "%.1f", imu.getRobotAngularVelocity(AngleUnit.DEGREES).zRotationRate);
 
             telemetry.update();
         }

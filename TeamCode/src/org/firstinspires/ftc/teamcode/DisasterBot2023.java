@@ -34,15 +34,14 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IMU;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@TeleOp(name = "HolonomicDrive", group = "MecanumBot")
-public class HolonomicDrive extends LinearOpMode {
+@TeleOp(name = "Disaster Bot 2023")
+public class DisasterBot2023 extends LinearOpMode {
     private boolean flipDirection = false;
     private boolean yButtonDown = false;
 
@@ -51,10 +50,10 @@ public class HolonomicDrive extends LinearOpMode {
         IMU imu = hardwareMap.get(IMU.class, "imu");
         ColorSensor colorSensor = hardwareMap.colorSensor.get("color_sensor");
 
-        DcMotor frontLeftMotor = hardwareMap.get(DcMotor.class, "front_right_motor"); // m2
-        DcMotor frontRightMotor = hardwareMap.get(DcMotor.class, "back_right_motor"); // m3
-        DcMotor backLeftMotor = hardwareMap.get(DcMotor.class, "front_left_motor"); // m1
-        DcMotor backRightMotor = hardwareMap.get(DcMotor.class, "back_left_motor"); // m4
+        DcMotor frontLeftMotor = hardwareMap.get(DcMotor.class, "front_left_motor"); // m2
+        DcMotor frontRightMotor = hardwareMap.get(DcMotor.class, "front_right_motor"); // m3
+        DcMotor backLeftMotor = hardwareMap.get(DcMotor.class, "back_left_motor"); // m1
+        DcMotor backRightMotor = hardwareMap.get(DcMotor.class, "back_right_motor"); // m4
 
         // needed only for the virtual bot
         frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -79,8 +78,8 @@ public class HolonomicDrive extends LinearOpMode {
 //            double leftStickX = -gamepad1.left_stick_x;
 //            double rightStickX = -gamepad1.right_stick_x;
 
-            double leftStickY = -gamepad1.left_stick_x;
-            double leftStickX = -gamepad1.left_stick_y;
+            double leftStickX = gamepad1.left_stick_x;
+            double leftStickY = -gamepad1.left_stick_y;
             double rightStickX = -gamepad1.right_stick_x;
 
             boolean rightBumper = gamepad1.right_bumper;

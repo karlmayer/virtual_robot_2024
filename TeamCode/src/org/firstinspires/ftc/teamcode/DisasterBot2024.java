@@ -31,7 +31,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IMU;
 
@@ -40,8 +39,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@TeleOp(name = "HolonomicDrive2", group = "MecanumBot")
-public class HolonomicDrive2 extends LinearOpMode {
+@TeleOp(name = "Disaster Bot 2024")
+public class DisasterBot2024 extends LinearOpMode {
     private static final double LEFT_STICK_Y_DEAD_ZONE = 0.1;
     private static final double LEFT_STICK_X_DEAD_ZONE = 0.1;
     private static final double RIGHT_STICK_X_DEAD_ZONE = 0.1;

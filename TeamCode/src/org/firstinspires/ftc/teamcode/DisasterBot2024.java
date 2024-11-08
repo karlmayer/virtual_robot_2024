@@ -51,7 +51,7 @@ public class DisasterBot2024 extends LinearOpMode {
 
     // Adjust power for a defined dead zone
     private double adjustPower(double power, double deadZone) {
-        double adjustedPower = power;
+        double adjustedPower = 0;
         if (Math.abs(power) > deadZone) {
             adjustedPower = (power - Math.signum(power) * deadZone) / (1 - deadZone);
         }
